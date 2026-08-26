@@ -21,8 +21,10 @@ html, body {
 
 body {
   background:
+    radial-gradient(circle at bottom, rgba(255,122,0,0.14), rgba(255,122,0,0.06) 20%, transparent 60%),
     radial-gradient(circle at top, rgba(255,122,0,0.18), transparent 30%),
     var(--bg);
+  background-attachment: fixed;
 }
 
 .container {
@@ -46,13 +48,13 @@ body {
 }
 
 .brand {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--accent);
 }
 
-.call-btn, .btn {
+.call-btn, .btn, .map-btn, .mini-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +87,16 @@ body {
   border-color: var(--line);
 }
 
-.call-btn:hover, .btn:hover {
+.map-btn, .mini-link {
+  background: rgba(255, 122, 0, 0.1);
+  color: var(--accent-2);
+  border: 1px solid rgba(255, 122, 0, 0.2);
+  padding: 11px 14px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.call-btn:hover, .btn:hover, .map-btn:hover, .mini-link:hover {
   transform: translateY(-1px);
 }
 
@@ -150,6 +161,10 @@ body {
   padding: 24px;
 }
 
+.panel-box.split{display:flex;gap:16px;align-items:flex-start}
+.panel-box.split .points,.panel-box.split .services-list{flex:1}
+.panel-box.split ul{margin:0;padding-left:18px;color:var(--muted)}
+
 .mini-label {
   color: var(--accent-2);
   text-transform: uppercase;
@@ -209,15 +224,15 @@ body {
 }
 
 .image-one {
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.12)), url('https://masterpiecer-images.s3.yandex.net/6a438fa2766911eea7923a7ca4cc1bdc:upscaled');
 }
 
 .image-two {
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.30)), url('https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=900&q=80');
 }
 
 .image-three {
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1555618561-0626a27f2281?auto=format&fit=crop&w=900&q=80');
+  background-image: linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.12)), url('https://mobile-review.com/all/wp-content/uploads/2021/08/foto-cam-3.jpg');
 }
 
 .feature {
@@ -236,9 +251,71 @@ body {
   line-height: 1.7;
 }
 
-.contact-box {
+.mini-link {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+.location-box,
+.reviews-box {
   margin: 24px 0 40px;
   padding: 24px 26px;
+}
+
+.location-box h2,
+.reviews-box h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.location-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.location-item:first-of-type {
+  border-top: 0;
+}
+
+.location-item p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.review-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.stars {
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.review-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.review-card span {
+  color: var(--text);
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .contact-box h2 {
@@ -294,17 +371,18 @@ body {
   }
 
   .cards-grid,
-  .gallery-grid {
+  .gallery-grid,
+  .reviews-grid {
     grid-template-columns: 1fr;
   }
 
-  .contact-row {
+  .location-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 12px;
   }
 
   .brand {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
